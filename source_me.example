@@ -1,0 +1,35 @@
+# Azure Service Principal Configuration
+# This file contains configuration variables for Azure service principal creation
+# Source this file from your shell scripts: . ./azure-config.sh
+
+# Service Principal Name
+# Must be unique within your Azure AD tenant
+export NAME="myname"
+
+# Azure Subscription ID
+# The subscription where the service principal will have access
+# To learn more of how to find this see: https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id
+export SUBSCRIPTION_ID="mysubscription"
+
+###########################################################
+## --------------------------------------------------------
+#  You can leave the below settings as-is, unless you are doing something unique.
+## --------------------------------------------------------
+###########################################################
+
+# Azure Role (optional - defaults to Contributor in script)
+# Common roles: Contributor, Reader, Owner, Custom roles
+export AZURE_ROLE="Contributor"
+
+# Scope (optional - defaults to subscription level in script)
+# Can be subscription, resource group, or resource level
+# Examples:
+# - /subscriptions/${SUBSCRIPTION_ID}
+# - /subscriptions/${SUBSCRIPTION_ID}/resourceGroups/myResourceGroup
+# - /subscriptions/${SUBSCRIPTION_ID}/resourceGroups/myRG/providers/Microsoft.Storage/storageAccounts/mystorageaccount
+export AZURE_SCOPE="/subscriptions/${SUBSCRIPTION_ID}"
+
+# Output format (optional)
+# Valid values: json, jsonc, none, table, tsv, yaml, yamlc
+# Default: json (sdk-auth provides json suitable for SDKs)
+export OUTPUT_FORMAT="json"

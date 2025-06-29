@@ -1,2 +1,38 @@
-# azure_env
-Scripts to help provisioning resources in Azure
+# Azure scripts to help with provisioning
+The scripts in this directory help for working with Azure APIs to provision resources.
+
+## Getting started to work with Azure from API side
+### Background info: Azure identity-based access uses Azure Active Directory
+Azure differs from AWS in how it handles API access and identity. While AWS often uses static access keys, Azure emphasizes identity-based access using Azure Active Directory (AAD), and API authentication is typically done through OAuth2 tokens issued for a service principal (app registration).
+
+### How to obtain credentials to work with Azure
+Below is a rough guide for how our team works with Azure.
+
+The `az` CLI tool will use the following 4 environment variables:
+  * AZURE_CLIENT_ID
+  * AZURE_CLIENT_SECRET
+  * AZURE_TENANT_ID
+  * AZURE_SUBSCRIPTION_ID
+
+We explain how our team obtains these variables below.
+1. You need a paying subscription in Azure, all of the below steps assume you have secured and paid for your own Azure API access
+1. Install the Azure CLI tool - See [install instructions](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+1.Login into Azure via use of the
+    * `az login`
+1. `cp source_me.example source_me.env`
+1. Edit `source_me.env`
+    * You need to customize 2 fields before you can run this
+      * NAME
+      * SUBSCRIPTION_ID
+          * If you do not know your subscription id you can look it up via: https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id
+1. `source source_me.env`
+    * We want to ensure that the variables set in `source_me.env` are now exported in your shell session so follow up scripts can use them.
+1. Create a service principal by executing
+    * `./create_service_principal.sh`
+        *  You will need to look at the output and grab a few pieces of info and export variables like below, this is what the azure scripts will use for authentication.
+
+                export AZURE_CLIENT_ID="REPLACE"
+                export AZURE_CLIENT_SECRET="REPLACE"
+                export AZURE_TENANT_ID="REPLACE"
+                export AZURE_SUBSCRIPTION_ID="REPLACE"
+1. Ensure you have those 4 environment variables set and exported into your shell instance, this is how the `az` tool will authenticate.

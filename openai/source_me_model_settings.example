@@ -1,0 +1,18 @@
+###
+# Customize for the model you want
+# Once you have an Azure OpenAI account provisioned
+#   you can use ./list_models.sh to learn of other models
+###
+export MODEL_NAME="gpt-4o-mini"
+export MODEL_VERSION="2024-07-18"
+
+# You likely can leave the below as is
+DATE_STAMP=$(date +%Y_%m_%d)
+USER_NAME=$(id -un)
+export PREFIX="${USER_NAME}"
+export RESOURCE_GROUP="${PREFIX}-${DATE_STAMP}-rg"
+export LOCATION="eastus"  # Use a region enabled for Azure OpenAI
+export OPENAI_RESOURCE_NAME="${PREFIX}"
+export DEPLOYMENT_NAME="${PREFIX}-${MODEL_NAME}-deployment"
+export API_VERSION="2024-04-01-preview"
+export MODEL_CREDENTIALS="SECRET_my_azure_model_credentials.env"

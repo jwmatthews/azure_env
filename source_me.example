@@ -10,3 +10,7 @@ export AZURE_SP_NAME="myname"
 # The subscription where the service principal will have access
 # To learn more of how to find this see: https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id
 export AZURE_SUBSCRIPTION_ID=$(az account show --query id -o tsv)
+
+# Output Credentials File
+# The file where the service principal credentials will be stored
+export OUTPUT_CREDENTIALS_FILE="SECRET_my_azure_credentials.env"

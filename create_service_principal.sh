@@ -7,7 +7,7 @@
 # Exit on any error, undefined variable, or pipe failure
 set -eu
 
-OUTPUT_CREDENTIALS_FILE="my_azure_credentials.env"
+OUTPUT_CREDENTIALS_FILE="${OUTPUT_CREDENTIALS_FILE:-SECRET_my_azure_credentials.env}"
 
 # Azure Role (optional - defaults to Contributor in script)
 # Common roles: Contributor, Reader, Owner, Custom roles

@@ -1,2 +1,17 @@
+# Ensure we ignore all .env files
+**/*.env
+**/SECRET*
+
+############
+# Below are several redundant settings, being explicit to help communicate
+# expected files that are created for either configuration or generated
+# credentials
+SECRET_my_azure_credentials.env
+openai/SECRET_my_azure_model_credentials.env
+# We use the source_me.env for personal settings, yet this isn't sensitive
+# information
 source_me.env
-my_azure_credentials.env
+# We use the source_me_model_settings.env for personal settings related to the
+# model to provision, but it's not sensitive information
+source_me_model_settings.env
+############

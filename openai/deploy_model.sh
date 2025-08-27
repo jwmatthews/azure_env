@@ -27,4 +27,4 @@ az cognitiveservices account deployment create \
   --model-version "$MODEL_VERSION" \
   --model-format OpenAI \
   --sku Standard \
-  --capacity 1
+  --capacity 500
